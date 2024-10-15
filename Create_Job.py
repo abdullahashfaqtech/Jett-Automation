@@ -333,38 +333,57 @@ time.sleep(2)
 # ------------------------------------------Upload Additional Photos--------------------------------------
 
 vehicle_front_img = driver.find_element(By.ID, "fileInput5")
+print("Front Image Icon successfully clicked by the bot:")
+time.sleep(3)
 front_image_path = r"D:\Abdullah's Desktop Data\Busses\down3.jpg"
 print("The bot find the path of the front image:")
 vehicle_front_img.send_keys(front_image_path)
-print("The front image has been uploaded:")
+print("The front image has been successfully uploaded:")
 time.sleep(5)
 
 vehicle_rear_img = driver.find_element(By.ID, "fileInput6")
+print("Rear Image Icon successfully clicked by the bot:")
+time.sleep(3)
 rear_image_path = r"D:\Abdullah's Desktop Data\Busses\down2.jpg"
 print("The bot find the rear image:")
 vehicle_rear_img.send_keys(rear_image_path)
-print("The Rear image has been uploaded:")
+print("The Rear image has been successfully uploaded:")
 time.sleep(5)
 
 vehicle_right_img = driver.find_element(By.ID, "Right")
+print("Right Image Icon successfully clicked by the bot:")
+time.sleep(3)
 right_image_path = r"D:\Abdullah's Desktop Data\Busses\down3.jpg"
 print("The bot find the rear image:")
 vehicle_right_img.send_keys(right_image_path)
+print("The Right image has been successfully uploaded:")
 time.sleep(5)
 
 vehicle_left_img = driver.find_element(By.ID, "Left")
+print("Left Image Icon successfully clicked by the bot:")
+time.sleep(3)
 left_image_path = r"D:\Abdullah's Desktop Data\Busses\down2.jpg"
+print("The bot find the Left Image path:")
 vehicle_left_img.send_keys(left_image_path)
+print("The Left image has been successfully uploaded:")
 time.sleep(5)
 
 vehicle_interior_img = driver.find_element(By.ID, "Interior")
+print("Interior Image Icon successfully clicked by the bot:")
+time.sleep(3)
 interior_image_path = r"D:\Abdullah's Desktop Data\Busses\down3.jpg"
+print("The bot finds the Interior image path:")
 vehicle_interior_img.send_keys(interior_image_path)
+print("The Interior image has been successfully Uploaded:")
 time.sleep(5)
 
 vehicle_dashboard_img = driver.find_element(By.ID, "Dashboard")
+print("Dashboard Image Icon successfully clicked by the bot:")
+time.sleep(3)
 dashboard_image_path = r"D:\Abdullah's Desktop Data\Busses\down2.jpg"
+print("The bot finds the dashboard image path:")
 vehicle_dashboard_img.send_keys(dashboard_image_path)
+print("The Dashboard image has been successfully Uploaded:")
 time.sleep(5)
 
 driver.execute_script("window.scrollBy(0, 5000);")
@@ -373,7 +392,9 @@ time.sleep(2)
 # ------------------------Add Driver's Concerns---------------------------------
 
 add_concern_btn = driver.find_element(By.XPATH, "//button[normalize-space()='Add Driver Concern']")
+print("The Clicks on the Mechanical Concern:")
 add_concern_btn.click()
+print("The Mechanical Concern has been added:")
 time.sleep(3)
 
 driver_mechanical_concern = driver.find_element(By.XPATH, "//textarea[@placeholder='You can write customer concern here...']")
@@ -395,7 +416,7 @@ time.sleep(3)
 save_electrical_concern = driver.find_element(By.XPATH, "//button[normalize-space()='Save & Add']")
 save_electrical_concern.click()
 
-br_task_type = driver.find_element(By.XPATH, "//span[@class='form-check-sign Cocern Toggle dark-font active-text']")
+br_task_type = driver.find_element(By.XPATH, "//span[@class='form-check-sign Concern Toggle dark-font active-text']")
 br_task_type.click()
 time.sleep(2)
 
