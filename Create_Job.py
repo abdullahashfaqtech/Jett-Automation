@@ -392,41 +392,57 @@ time.sleep(2)
 # ------------------------Add Driver's Concerns---------------------------------
 
 add_concern_btn = driver.find_element(By.XPATH, "//button[normalize-space()='Add Driver Concern']")
-print("The Clicks on the Mechanical Concern:")
+print("The system Navigates towards the Add Concern button:")
 add_concern_btn.click()
-print("The Mechanical Concern has been added:")
+print("The Add Concern button has been clicked:")
 time.sleep(3)
 
 driver_mechanical_concern = driver.find_element(By.XPATH, "//textarea[@placeholder='You can write customer concern here...']")
+print("By Default the system clicks the Mechanical Radio Button:")
 driver_mechanical_concern.send_keys("This is the Mechanical Concern:")
+print("The system Type the Mechanical Concern text and Send to the Text Area:")
 time.sleep(3)
 
 save_mech_concern = driver.find_element(By.XPATH, "//button[normalize-space()='Save & Add']")
+print("The System Finds the Save & Add Concern's button Path to add the Mechanical Concern:")
 save_mech_concern.click()
+print("The Save & Add button has been clicked by the bot to ad the Mechanical Concern:")
 time.sleep(3)
 
 electrical_task_type = driver.find_element(By.XPATH, "//div[contains(@class,'modal-body1 rtl')]//div[2]//label[1]")
+print("The Bot finds the Electrical Radio Button path:")
 electrical_task_type.click()
+print("The Bot click the Electrical Radio button:")
 time.sleep(2)
 
 driver_electrical_concern = driver.find_element(By.XPATH, "//textarea[@placeholder='You can write customer concern here...']")
+print("The system Finds the Electrical Concern text area :")
 driver_electrical_concern.send_keys("This is the Electrical Concern:")
+print("The system type the Electrical Concern text in the Text Area:")
 time.sleep(3)
 
 save_electrical_concern = driver.find_element(By.XPATH, "//button[normalize-space()='Save & Add']")
+print("The System Finds the Save & Add Concern's button Path to add Electrical Concern:")
 save_electrical_concern.click()
+print("The Save & Add button has been clicked by the bot to add the Electrical Concern:")
+time.sleep(3)
 
 br_task_type = driver.find_element(By.XPATH, "//span[@class='form-check-sign Concern Toggle dark-font active-text']")
+print("The Bot finds the Body Repair Radio Button path:")
 br_task_type.click()
+print("The Bot click the Body Repair Radio button:")
 time.sleep(2)
 
 br_driver_concern = driver.find_element(By.XPATH, "//textarea[@placeholder='You can write customer concern here...']")
+print("The system Finds the Body Repair Concern text area :")
 br_driver_concern.send_keys("This is the Body Repair Concern:")
+print("The system type the Body Repair Concern text in the Text Area:")
 time.sleep(3)
 
 save_br_concern = driver.find_element(By.XPATH, "//button[normalize-space()='Save & Add']")
+print("The System Finds the Save & Add Concern's button Path to add Body Repair Concern:")
 save_br_concern.click()
-
+print("The Save & Add button has been clicked by the bot to add the Body Repair Concern:")
 time.sleep(4)
 
 # -------------------------------Entry Stage Checklist----------------------------------------
@@ -444,7 +460,7 @@ try:
         note_input.send_keys(add_note)
         print(f"Added note: {add_note}")
 
-        # List of checkpoint IDs (adjust if necessary)
+        # List of checkpoint IDs 
         checkpoint_ids = [
             "تفقد زجاج الباص كامل2",
             "طاسات عجال+الاطارات2",
