@@ -89,8 +89,10 @@ driver.find_element(By.XPATH, "//i[@class='fas fa-search pt-1']").click()
 print("The Entered Plate Number's data has been fetched:")
 time.sleep(5)
 
-driver.execute_script("window.scrollBy(0, 5000);")
-time.sleep(2)
+element_1 = driver.find_element(By.XPATH, "//div[@class='ng-select-container']//input[@role='combobox']")
+driver.execute_script("arguments[0].scrollIntoView(true);", element_1)
+time.sleep(3)
+element_1.click()
 
 # ------------------------Select the specific driver from the driver dropdown-------------------------
 
@@ -111,7 +113,6 @@ select_specific_driver.click()
 print("The Drivers has been selected from the driver's dropdown:")
 
 time.sleep(3)
-
 
 
 # for select_driver in driver_list:
@@ -228,9 +229,10 @@ time.sleep(3)
 #
 # time.sleep(3)
 
-driver.execute_script("window.scrollBy(0, 5000);")
-time.sleep(2)
-
+element_2 = driver.find_element(By.XPATH, "//span[normalize-space()='75%']")
+driver.execute_script("arguments[0].scrollIntoView(true);", element_2)
+time.sleep(3)
+element_2.click()
 # ---------------------------------Add Image Markers-----------------------------------------------
 # -------------------------Add the fuel Information while creating Job Card------------------------
 
@@ -300,11 +302,12 @@ WebDriverWait(driver, 10).until(
     EC.visibility_of_element_located((By.XPATH, "//div[@class='row text-center px-2']"))
 )
 
-time.sleep(5)
+time.sleep(8)
 
-driver.execute_script("window.scrollBy(0, 5000);")
-time.sleep(2)
-
+element_3 = driver.find_element(By.ID, "fileInput5")
+driver.execute_script("arguments[0].scrollIntoView(true);", element_3)
+time.sleep(3)
+element_3.click()
 
 # driver.find_element(By.XPATH, "//span[normalize-space()='75%']").click()
 # time.sleep(2)
@@ -386,8 +389,10 @@ vehicle_dashboard_img.send_keys(dashboard_image_path)
 print("The Dashboard image has been successfully Uploaded:")
 time.sleep(5)
 
-driver.execute_script("window.scrollBy(0, 5000);")
-time.sleep(2)
+element_4 = driver.find_element(By.XPATH, "//button[normalize-space()='Add Driver Concern']")
+driver.execute_script("arguments[0].scrollIntoView(true);", element_4)
+time.sleep(3)
+element_4.click()
 
 # ------------------------Add Driver's Concerns---------------------------------
 
@@ -425,13 +430,13 @@ save_electrical_concern = driver.find_element(By.XPATH, "//button[normalize-spac
 print("The System Finds the Save & Add Concern's button Path to add Electrical Concern:")
 save_electrical_concern.click()
 print("The Save & Add button has been clicked by the bot to add the Electrical Concern:")
-time.sleep(3)
+time.sleep(5)
 
-br_task_type = driver.find_element(By.XPATH, "//span[@class='form-check-sign Concern Toggle dark-font active-text']")
+br_task_type = driver.find_element(By.XPATH, "//span[@class='form-check-sign CocernToggle dark-font active-text']")
 print("The Bot finds the Body Repair Radio Button path:")
 br_task_type.click()
 print("The Bot click the Body Repair Radio button:")
-time.sleep(2)
+time.sleep(3)
 
 br_driver_concern = driver.find_element(By.XPATH, "//textarea[@placeholder='You can write customer concern here...']")
 print("The system Finds the Body Repair Concern text area :")
@@ -444,6 +449,11 @@ print("The System Finds the Save & Add Concern's button Path to add Body Repair 
 save_br_concern.click()
 print("The Save & Add button has been clicked by the bot to add the Body Repair Concern:")
 time.sleep(4)
+
+element_5 = driver.find_element(By.ID, "تفقد زجاج الباص كامل1")
+driver.execute_script("arguments[0].scrollIntoView(true);", element_5)
+time.sleep(3)
+element_5.click()
 
 # -------------------------------Entry Stage Checklist----------------------------------------
 
@@ -460,7 +470,7 @@ try:
         note_input.send_keys(add_note)
         print(f"Added note: {add_note}")
 
-        # List of checkpoint IDs 
+        # List of checkpoint IDs
         checkpoint_ids = [
             "تفقد زجاج الباص كامل2",
             "طاسات عجال+الاطارات2",
