@@ -432,7 +432,7 @@ save_electrical_concern.click()
 print("The Save & Add button has been clicked by the bot to add the Electrical Concern:")
 time.sleep(5)
 
-br_task_type = driver.find_element(By.XPATH, "//span[@class='form-check-sign CocernToggle dark-font active-text']")
+br_task_type = driver.find_element(By.XPATH, "//span[@class='form-check-sign CocernToggle dark-font'][normalize-space()='Body Repair']")
 print("The Bot finds the Body Repair Radio Button path:")
 br_task_type.click()
 print("The Bot click the Body Repair Radio button:")
