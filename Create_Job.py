@@ -64,7 +64,7 @@ time.sleep(5)
 
 driver.find_element(By.XPATH,
                     "//div[@class='ng-select-container ng-has-value']//span[@class='ng-arrow-wrapper']").click()
-print("branch Dropdown has been selected:")
+print("The Branch Dropdown has been selected:")
 
 time.sleep(5)
 
@@ -113,7 +113,6 @@ select_specific_driver.click()
 print("The Drivers has been selected from the driver's dropdown:")
 
 time.sleep(3)
-
 
 # for select_driver in driver_list:
 #     if select_driver.text == "نايف حسن عبد القادر الزوغة":
@@ -234,6 +233,9 @@ driver.execute_script("arguments[0].scrollIntoView(true);", element_2)
 time.sleep(3)
 element_2.click()
 # ---------------------------------Add Image Markers-----------------------------------------------
+
+add_image_marker_1 = driver.find_element(By.XPATH, "//div[@class='img-map']//canvas")
+
 # -------------------------Add the fuel Information while creating Job Card------------------------
 
 # Click on the "75%" button
@@ -250,12 +252,10 @@ mileage_image_path = r"D:\Abdullah's Desktop Data\Busses\down2.jpg"
 print("The Bot finds the Image path Successfully:")
 time.sleep(5)
 
-
 # Send the file path to the <input type="file"> element
 upload_mileage_img.send_keys(mileage_image_path)
 print("The image has been successfully uploaded.")
 time.sleep(5)
-
 
 # # Upload the mileage image
 # upload_mileage_img = driver.find_element(By.XPATH, "//i[@class='fas fa-2x fa-camera upload-btn camera-icon']")
@@ -285,7 +285,8 @@ top_mileage_value = int(top_mileage_element.text.strip())
 
 # Close the mileage history pop-up (wait for the close button to be clickable)
 close_button = WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.XPATH, "//button[contains(@type,'button')]//span[contains(@aria-hidden,'true')][normalize-space()='×']"))
+    EC.element_to_be_clickable(
+        (By.XPATH, "//button[contains(@type,'button')]//span[contains(@aria-hidden,'true')][normalize-space()='×']"))
 )
 close_button.click()
 
@@ -296,18 +297,7 @@ print("The Mileage has been incremented by 1000 km:")
 mileage_input_field.clear()  # Clear the field before entering a new value
 mileage_input_field.send_keys(str(new_mileage_value))
 print("The mileage has been entered to the mileage field:")
-
-# Wait for the text-center row to ensure the action is successful
-WebDriverWait(driver, 10).until(
-    EC.visibility_of_element_located((By.XPATH, "//div[@class='row text-center px-2']"))
-)
-
-time.sleep(8)
-
-element_3 = driver.find_element(By.ID, "fileInput5")
-driver.execute_script("arguments[0].scrollIntoView(true);", element_3)
-time.sleep(3)
-element_3.click()
+time.sleep(5)
 
 # driver.find_element(By.XPATH, "//span[normalize-space()='75%']").click()
 # time.sleep(2)
@@ -332,6 +322,11 @@ element_3.click()
 # driver.find_element(By.XPATH, "//div[@class='row text-center px-2']")
 #
 # time.sleep(5)
+
+element_3 = driver.find_element(By.XPATH, "//label[@for='fileInput5']//i[@title='upload']")
+driver.execute_script("arguments[0].scrollIntoView(true);", element_3)
+time.sleep(3)
+element_3.click()
 
 # ------------------------------------------Upload Additional Photos--------------------------------------
 
@@ -394,13 +389,20 @@ driver.execute_script("arguments[0].scrollIntoView(true);", element_4)
 time.sleep(3)
 element_4.click()
 
-# ------------------------Add Driver's Concerns---------------------------------
+# --------------------------------Add Driver's Concerns---------------------------------
+
 
 add_concern_btn = driver.find_element(By.XPATH, "//button[normalize-space()='Add Driver Concern']")
 print("The system Navigates towards the Add Concern button:")
-add_concern_btn.click()
-print("The Add Concern button has been clicked:")
-time.sleep(3)
+time.sleep(2)
+
+if add_concern_btn.is_displayed() and add_concern_btn.is_enabled():
+    add_concern_btn.click()
+    print("The bot successfully pressed the Add Concern button: ")
+else:
+    print("Add Concern button is not visible or enabled.")
+
+time.sleep(5)
 
 driver_mechanical_concern = driver.find_element(By.XPATH, "//textarea[@placeholder='You can write customer concern here...']")
 print("By Default the system clicks the Mechanical Radio Button:")
@@ -455,7 +457,7 @@ driver.execute_script("arguments[0].scrollIntoView(true);", element_5)
 time.sleep(3)
 element_5.click()
 
-# -------------------------------Entry Stage Checklist----------------------------------------
+# -----------------------------------Entry Stage Checklist----------------------------------------
 
 try:
     # Check if 'Need Maintenance' status is visible
