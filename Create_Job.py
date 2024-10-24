@@ -89,10 +89,10 @@ driver.find_element(By.XPATH, "//i[@class='fas fa-search pt-1']").click()
 print("The Entered Plate Number's data has been fetched:")
 time.sleep(5)
 
-element_1 = driver.find_element(By.XPATH, "//div[@class='ng-select-container']//input[@role='combobox']")
-driver.execute_script("arguments[0].scrollIntoView(true);", element_1)
+scroll_element_1 = driver.find_element(By.XPATH, "//div[@class='ng-select-container']//input[@role='combobox']")
+driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_1)
 time.sleep(3)
-element_1.click()
+scroll_element_1.click()
 
 # ------------------------Select the specific driver from the driver dropdown-------------------------
 
@@ -228,13 +228,44 @@ time.sleep(3)
 #
 # time.sleep(3)
 
-element_2 = driver.find_element(By.XPATH, "//span[normalize-space()='75%']")
-driver.execute_script("arguments[0].scrollIntoView(true);", element_2)
+scroll_element_2 = driver.find_element(By.XPATH, "//div[@class='img-map']//canvas")
+driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_2)
 time.sleep(3)
-element_2.click()
+scroll_element_2.click()
 # ---------------------------------Add Image Markers-----------------------------------------------
 
 add_image_marker_1 = driver.find_element(By.XPATH, "//div[@class='img-map']//canvas")
+print("The Image Icon is Successfully clicked by the Bot:")
+time.sleep(3)
+
+# Specify the file path (use raw string for Windows path)
+image_marker_1_path = r"D:\Abdullah's Desktop Data\Busses\down9.jpg"
+print("The Bot finds the Image path Successfully:")
+time.sleep(5)
+
+# Send the file path to the <input type="file"> element
+add_image_marker_1.send_keys(image_marker_1_path)
+print("The image marker 1 has been successfully uploaded.")
+time.sleep(5)
+
+add_image_marker_2 = driver.find_element(By.XPATH, "//div[@class='img-map']//canvas")
+print("The Image Icon is Successfully clicked by the Bot:")
+time.sleep(3)
+
+# Specify the file path (use raw string for Windows path)
+image_marker_2_path = r"D:\Abdullah's Desktop Data\Busses\down9.jpg"
+print("The Bot finds the Image path Successfully:")
+time.sleep(5)
+
+# Send the file path to the <input type="file"> element
+add_image_marker_2.send_keys(image_marker_2_path)
+print("The image marker 1 has been successfully uploaded.")
+time.sleep(5)
+
+scroll_element_3 = driver.find_element(By.XPATH, "//span[normalize-space()='75%']")
+driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_3)
+time.sleep(3)
+scroll_element_3.click()
 
 # -------------------------Add the fuel Information while creating Job Card------------------------
 
@@ -323,10 +354,10 @@ time.sleep(5)
 #
 # time.sleep(5)
 
-element_3 = driver.find_element(By.XPATH, "//label[@for='fileInput5']//i[@title='upload']")
-driver.execute_script("arguments[0].scrollIntoView(true);", element_3)
+scroll_element_4 = driver.find_element(By.XPATH, "//label[@for='fileInput5']//i[@title='upload']")
+driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_4)
 time.sleep(3)
-element_3.click()
+scroll_element_4.click()
 
 # ------------------------------------------Upload Additional Photos--------------------------------------
 
@@ -384,10 +415,10 @@ vehicle_dashboard_img.send_keys(dashboard_image_path)
 print("The Dashboard image has been successfully Uploaded:")
 time.sleep(5)
 
-element_4 = driver.find_element(By.XPATH, "//button[normalize-space()='Add Driver Concern']")
-driver.execute_script("arguments[0].scrollIntoView(true);", element_4)
+scroll_element_5 = driver.find_element(By.XPATH, "//button[normalize-space()='Add Driver Concern']")
+driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_5)
 time.sleep(3)
-element_4.click()
+scroll_element_5.click()
 
 # --------------------------------Add Driver's Concerns---------------------------------
 
@@ -452,10 +483,10 @@ save_br_concern.click()
 print("The Save & Add button has been clicked by the bot to add the Body Repair Concern:")
 time.sleep(4)
 
-element_5 = driver.find_element(By.ID, "تفقد زجاج الباص كامل1")
-driver.execute_script("arguments[0].scrollIntoView(true);", element_5)
+scroll_element_6 = driver.find_element(By.ID, "تفقد زجاج الباص كامل1")
+driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_6)
 time.sleep(3)
-element_5.click()
+scroll_element_6.click()
 
 # -----------------------------------Entry Stage Checklist----------------------------------------
 
