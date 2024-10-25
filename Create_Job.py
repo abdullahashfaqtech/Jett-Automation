@@ -4,8 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import NoSuchElementException
+import random
 
-# import random
 # import os
 
 # from selenium.webdriver.chrome.service import Service
@@ -228,44 +228,57 @@ time.sleep(3)
 #
 # time.sleep(3)
 
-scroll_element_2 = driver.find_element(By.XPATH, "//div[@class='img-map']//canvas")
-driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_2)
-time.sleep(3)
-scroll_element_2.click()
-# ---------------------------------Add Image Markers-----------------------------------------------
-
-add_image_marker_1 = driver.find_element(By.XPATH, "//div[@class='img-map']//canvas")
-print("The Image Icon is Successfully clicked by the Bot:")
-time.sleep(3)
-
-# Specify the file path (use raw string for Windows path)
-image_marker_1_path = r"D:\Abdullah's Desktop Data\Busses\down9.jpg"
-print("The Bot finds the Image path Successfully:")
-time.sleep(5)
-
-# Send the file path to the <input type="file"> element
-add_image_marker_1.send_keys(image_marker_1_path)
-print("The image marker 1 has been successfully uploaded.")
-time.sleep(5)
-
-add_image_marker_2 = driver.find_element(By.XPATH, "//div[@class='img-map']//canvas")
-print("The Image Icon is Successfully clicked by the Bot:")
-time.sleep(3)
-
-# Specify the file path (use raw string for Windows path)
-image_marker_2_path = r"D:\Abdullah's Desktop Data\Busses\down9.jpg"
-print("The Bot finds the Image path Successfully:")
-time.sleep(5)
-
-# Send the file path to the <input type="file"> element
-add_image_marker_2.send_keys(image_marker_2_path)
-print("The image marker 1 has been successfully uploaded.")
-time.sleep(5)
-
 scroll_element_3 = driver.find_element(By.XPATH, "//span[normalize-space()='75%']")
 driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_3)
 time.sleep(3)
 scroll_element_3.click()
+# ---------------------------------Add Image Markers-----------------------------------------------
+
+# add_image_marker_1 = driver.find_element(By.XPATH, "//div[@class='img-map']//canvas")
+# print("The Image Icon is Successfully clicked by the Bot:")
+# time.sleep(3)
+#
+# # Specify the file path (use raw string for Windows path)
+# image_marker_1_path = r"D:\Abdullah's Desktop Data\Busses\down9.jpg"
+# print("The Bot finds the Image path Successfully:")
+# add_image_marker_1.send_keys(image_marker_1_path)
+# time.sleep(5)
+#
+# # Send the file path to the <input type="file"> element
+# add_image_marker_1.send_keys(image_marker_1_path)
+# print("The image marker 1 has been successfully uploaded.")
+# time.sleep(5)
+
+# Locate the file input associated with the canvas (if it exists)
+# add_image_marker_1 = driver.find_element(By.XPATH, "//input[@type='file']")
+# driver.execute_script("arguments[0].style.display = 'block';", add_image_marker_1)  # Make it visible if hidden
+#
+# # Specify the file path
+# image_marker_1_path = r"D:\Abdullah's Desktop Data\Busses\down9.jpg"
+#
+# # Upload the file
+# add_image_marker_1.send_keys(image_marker_1_path)
+# print("The image has been successfully uploaded.")
+#
+#
+# add_image_marker_2 = driver.find_element(By.XPATH, "//div[@class='img-map']//canvas")
+# print("The Image Icon is Successfully clicked by the Bot:")
+# time.sleep(3)
+#
+# # Specify the file path (use raw string for Windows path)
+# image_marker_2_path = r"D:\Abdullah's Desktop Data\Busses\down9.jpg"
+# print("The Bot finds the Image path Successfully:")
+# time.sleep(5)
+#
+# # Send the file path to the <input type="file"> element
+# add_image_marker_2.send_keys(image_marker_2_path)
+# print("The image marker 1 has been successfully uploaded.")
+# time.sleep(5)
+#
+# scroll_element_3 = driver.find_element(By.XPATH, "//span[normalize-space()='75%']")
+# driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_3)
+# time.sleep(3)
+# scroll_element_3.click()
 
 # -------------------------Add the fuel Information while creating Job Card------------------------
 
@@ -354,7 +367,7 @@ time.sleep(5)
 #
 # time.sleep(5)
 
-scroll_element_4 = driver.find_element(By.XPATH, "//label[@for='fileInput5']//i[@title='upload']")
+scroll_element_4 = driver.find_element(By.XPATH, "//label[normalize-space()='Vehicle Front']")
 driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_4)
 time.sleep(3)
 scroll_element_4.click()
@@ -415,37 +428,58 @@ vehicle_dashboard_img.send_keys(dashboard_image_path)
 print("The Dashboard image has been successfully Uploaded:")
 time.sleep(5)
 
-scroll_element_5 = driver.find_element(By.XPATH, "//button[normalize-space()='Add Driver Concern']")
+scroll_element_5 = driver.find_element(By.XPATH, "//h5[normalize-space()='Driver Concern']")
 driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_5)
 time.sleep(3)
 scroll_element_5.click()
 
 # --------------------------------Add Driver's Concerns---------------------------------
 
-
+# Click the 'Add Driver Concern' button
 add_concern_btn = driver.find_element(By.XPATH, "//button[normalize-space()='Add Driver Concern']")
-print("The system Navigates towards the Add Concern button:")
-time.sleep(2)
-
-if add_concern_btn.is_displayed() and add_concern_btn.is_enabled():
-    add_concern_btn.click()
-    print("The bot successfully pressed the Add Concern button: ")
-else:
-    print("Add Concern button is not visible or enabled.")
-
+print("The system navigates towards the 'Add Concern' button.")
+add_concern_btn.click()
+print("The Bot successfully click the Add Concern Button:")
 time.sleep(5)
 
-driver_mechanical_concern = driver.find_element(By.XPATH, "//textarea[@placeholder='You can write customer concern here...']")
-print("By Default the system clicks the Mechanical Radio Button:")
-driver_mechanical_concern.send_keys("This is the Mechanical Concern:")
-print("The system Type the Mechanical Concern text and Send to the Text Area:")
+# Locate the textarea and add a mechanical concern
+driver_mechanical_concern = driver.find_element(By.XPATH,
+                                                "//textarea[@placeholder='You can write customer concern here...']")
+print("System navigates to the Mechanical Concern textarea.")
+driver_mechanical_concern.send_keys("This is the Mechanical Concern.")
+print("The system types the Mechanical Concern text into the textarea.")
 time.sleep(3)
 
+# Locate and click the 'Save & Add' button to save the concern
 save_mech_concern = driver.find_element(By.XPATH, "//button[normalize-space()='Save & Add']")
-print("The System Finds the Save & Add Concern's button Path to add the Mechanical Concern:")
+print("System finds the 'Save & Add' button path to add the Mechanical Concern.")
 save_mech_concern.click()
-print("The Save & Add button has been clicked by the bot to ad the Mechanical Concern:")
+print("The 'Save & Add' button has been clicked by the bot to add the Mechanical Concern.")
 time.sleep(3)
+
+# add_concern_btn = driver.find_element(By.XPATH, "//button[normalize-space()='Add Driver Concern']")
+# print("The system Navigates towards the Add Concern button:")
+# time.sleep(2)
+#
+# if add_concern_btn.is_displayed() and add_concern_btn.is_enabled():
+#     add_concern_btn.click()
+#     print("The bot successfully pressed the Add Concern button: ")
+# else:
+#     print("Add Concern button is not visible or enabled.")
+#
+# time.sleep(5)
+#
+# driver_mechanical_concern = driver.find_element(By.XPATH, "//textarea[@placeholder='You can write customer concern here...']")
+# print("By Default the system clicks the Mechanical Radio Button:")
+# driver_mechanical_concern.send_keys("This is the Mechanical Concern:")
+# print("The system Type the Mechanical Concern text and Send to the Text Area:")
+# time.sleep(3)
+#
+# save_mech_concern = driver.find_element(By.XPATH, "//button[normalize-space()='Save & Add']")
+# print("The System Finds the Save & Add Concern's button Path to add the Mechanical Concern:")
+# save_mech_concern.click()
+# print("The Save & Add button has been clicked by the bot to ad the Mechanical Concern:")
+# time.sleep(3)
 
 electrical_task_type = driver.find_element(By.XPATH, "//div[contains(@class,'modal-body1 rtl')]//div[2]//label[1]")
 print("The Bot finds the Electrical Radio Button path:")
@@ -453,7 +487,8 @@ electrical_task_type.click()
 print("The Bot click the Electrical Radio button:")
 time.sleep(2)
 
-driver_electrical_concern = driver.find_element(By.XPATH, "//textarea[@placeholder='You can write customer concern here...']")
+driver_electrical_concern = driver.find_element(By.XPATH,
+                                                "//textarea[@placeholder='You can write customer concern here...']")
 print("The system Finds the Electrical Concern text area :")
 driver_electrical_concern.send_keys("This is the Electrical Concern:")
 print("The system type the Electrical Concern text in the Text Area:")
@@ -465,7 +500,8 @@ save_electrical_concern.click()
 print("The Save & Add button has been clicked by the bot to add the Electrical Concern:")
 time.sleep(5)
 
-br_task_type = driver.find_element(By.XPATH, "//span[@class='form-check-sign CocernToggle dark-font'][normalize-space()='Body Repair']")
+br_task_type = driver.find_element(By.XPATH,
+                                   "//span[@class='form-check-sign CocernToggle dark-font'][normalize-space()='Body Repair']")
 print("The Bot finds the Body Repair Radio Button path:")
 br_task_type.click()
 print("The Bot click the Body Repair Radio button:")
@@ -490,49 +526,53 @@ scroll_element_6.click()
 
 # -----------------------------------Entry Stage Checklist----------------------------------------
 
+
+# List of possible statuses
+statuses = ["Not-Available", "Good", "Need Maintenance"]
+
+# List of checkpoint IDs
+checkpoint_ids = [
+    "تفقد زجاج الباص كامل2",
+    "طاسات عجال+الاطارات2",
+    "الهندام2",
+    "تاكوجراف1",
+    "الاضوية3",
+    "المرايا2",
+    "DVD2",
+    "العدة اليدوية2",
+    "الشاشات3",
+    "ميكرفون2"
+]
+
 try:
-    # Check if 'Need Maintenance' status is visible
-    need_maintenance_status = driver.find_element(By.XPATH, "//span[normalize-space()='Need Maintenance']")
-    if need_maintenance_status.is_displayed():
-        print("The Checkpoint Status is 'Need Maintenance'.")
+    # Iterate over each checkpoint
+    for i, checkpoint_id in enumerate(checkpoint_ids, start=1):
+        try:
+            # Find the checkpoint element
+            checkpoint = driver.find_element(By.ID, checkpoint_id)
 
-        # Find the note input field
-        note_input = driver.find_element(By.XPATH, "//input[@placeholder='Note']")
-        note_input.clear()  # Clear the input field before adding a note
-        add_note = "The Note is mandatory for the Need Maintenance Checkpoint"
-        note_input.send_keys(add_note)
-        print(f"Added note: {add_note}")
+            # Randomly select a status for the checkpoint
+            selected_status = random.choice(statuses)
+            print(f"Setting status for checkpoint {i}: {checkpoint_id} to {selected_status}")
 
-        # List of checkpoint IDs
-        checkpoint_ids = [
-            "تفقد زجاج الباص كامل2",
-            "طاسات عجال+الاطارات2",
-            "الهندام2",
-            "تاكوجراف1",
-            "الاضوية3",
-            "المرايا2",
-            "DVD2",
-            "العدة اليدوية2",
-            "الشاشات3",
-            "ميكرفون2"
-        ]
+            # Select the appropriate status element (assuming these statuses are radio buttons or similar)
+            status_element = driver.find_element(By.XPATH, f"//label[normalize-space()='{selected_status}']")
+            status_element.click()
 
-        # Iterate over the checkpoint IDs and click each one
-        for i, checkpoint_id in enumerate(checkpoint_ids, start=1):
-            try:
-                checkpoint = driver.find_element(By.ID, checkpoint_id)
-                checkpoint.click()
-                print(f"Checkpoint {i} clicked: {checkpoint_id}")
-            except NoSuchElementException:
-                print(f"Checkpoint {i} not found: {checkpoint_id}. Moving to the next one.")
+            # If 'Need Maintenance' is selected, add a note
+            if selected_status == "Need Maintenance":
+                print(f"Adding note for checkpoint {i} as 'Need Maintenance' is selected.")
+                note_input = driver.find_element(By.XPATH, "//input[@placeholder='Note']")
+                note_input.clear()
+                note_text = "Mandatory note for 'Need Maintenance'."
+                note_input.send_keys(note_text)
+                print(f"Note added: {note_text}")
 
-    else:
-        print("Invalid Status of the Checkpoint: Not 'Need Maintenance'.")
+        except NoSuchElementException:
+            print(f"Checkpoint {i} not found: {checkpoint_id}. Moving to the next one.")
 
 except NoSuchElementException as e:
-    print(f"Error: {str(e)} - 'Need Maintenance' status not found on the page.")
-
-time.sleep(5)
+    print(f"Error: {str(e)} - Element not found.")
 
 # try:
 #     need_maintenance_status = driver.find_element(By.XPATH, "//span[normalize-space()='Need Maintenance']")
