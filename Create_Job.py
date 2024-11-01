@@ -18,7 +18,7 @@ driver.get("https://jett.autohub.jo/auth/login")
 # ----------------------------------------Generic Log-In Handling----------------------------------
 
 email = "admin@jett.com"
-old_password = "123123"
+old_password = "P@$$w0rd@autohub"
 new_password = "123456"
 
 driver.find_element(By.NAME, "email").send_keys(email)
@@ -518,6 +518,9 @@ print("The System Finds the Save & Add Concern's button Path to add Body Repair 
 save_br_concern.click()
 print("The Save & Add button has been clicked by the bot to add the Body Repair Concern:")
 time.sleep(4)
+
+close_customer_concern_pop_up = driver.find_element(By.XPATH, "//button[@class='btn btn-primary btn-round btn-simple m-0 mb-3']")
+close_customer_concern_pop_up.click()
 
 scroll_element_6 = driver.find_element(By.ID, "تفقد زجاج الباص كامل1")
 driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_6)
