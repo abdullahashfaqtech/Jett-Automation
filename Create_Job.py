@@ -521,12 +521,13 @@ time.sleep(4)
 
 close_customer_concern_pop_up = driver.find_element(By.XPATH, "//button[@class='btn btn-primary btn-round btn-simple m-0 mb-3']")
 close_customer_concern_pop_up.click()
+print("The Add Concern Pop-up has been closed:")
 
-scroll_element_6 = driver.find_element(By.ID, "تفقد زجاج الباص كامل1")
+scroll_element_6 = driver.find_element(By.CLASS_NAME, "check-point-title")
 driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_6)
 time.sleep(3)
 scroll_element_6.click()
-
+time.sleep(4)
 # -----------------------------------Entry Stage Checklist----------------------------------------
 
 
@@ -559,7 +560,7 @@ try:
             print(f"Setting status for checkpoint {i}: {checkpoint_id} to {selected_status}")
 
             # Select the appropriate status element (assuming these statuses are radio buttons or similar)
-            status_element = driver.find_element(By.XPATH, f"//label[normalize-space()='{selected_status}']")
+            status_element = driver.find_element(By.XPATH, f"//tbody/tr[1]/td[3]/div[1]/label[1]/span[1]'{selected_status}']")
             status_element.click()
 
             # If 'Need Maintenance' is selected, add a note
