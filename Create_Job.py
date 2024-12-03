@@ -17,7 +17,7 @@ driver.get("https://jett.autohub.jo/auth/login")
 
 # ----------------------------------------Generic Log-In Handling----------------------------------
 
-email = "admin@jett.com"
+email = "reyadhajahjeh2109@jett.com"
 old_password = "P@$$w0rd@autohub"
 new_password = "123456"
 
@@ -536,6 +536,7 @@ statuses = ["Not-Available", "Good", "Need Maintenance"]
 
 # List of checkpoint IDs
 checkpoint_ids = [
+
     "تفقد زجاج الباص كامل2",
     "طاسات عجال+الاطارات2",
     "الهندام2",
