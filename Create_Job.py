@@ -3,7 +3,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import random
 
 # import os
@@ -531,95 +533,209 @@ time.sleep(4)
 # -----------------------------------Entry Stage Checklist----------------------------------------
 
 
-# List of possible statuses
-statuses = ["Not-Available", "Good", "Need Maintenance"]
+Entry_stage_element_1 = driver.find_element(By.XPATH, '//span[@class="form-check-sign radio-checkbox font-14 InspectionToggle"]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_1)
+print(f"Is element visible? {is_displayed}")
 
-# List of checkpoint IDs
-checkpoint_ids = [
-
-    "تفقد زجاج الباص كامل2",
-    "طاسات عجال+الاطارات2",
-    "الهندام2",
-    "تاكوجراف1",
-    "الاضوية3",
-    "المرايا2",
-    "DVD2",
-    "العدة اليدوية2",
-    "الشاشات3",
-    "ميكرفون2"
-]
+Entry_stage_element_1 = driver.find_element(By.XPATH, '//span[@class="form-check-sign radio-checkbox font-14 InspectionToggle"]')
+rect = Entry_stage_element_1.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
 try:
-    # Iterate over each checkpoint
-    for i, checkpoint_id in enumerate(checkpoint_ids, start=1):
-        try:
-            # Find the checkpoint element
-            checkpoint = driver.find_element(By.ID, checkpoint_id)
+    Entry_stage_element_1 = driver.find_element(By.XPATH, '//span[@class="form-check-sign radio-checkbox font-14 InspectionToggle"]')
+    actions = ActionChains(driver)
+    actions.move_to_element(Entry_stage_element_1).click().perform()
+except:
+    pass
 
-            # Randomly select a status for the checkpoint
-            selected_status = random.choice(statuses)
-            print(f"Setting status for checkpoint {i}: {checkpoint_id} to {selected_status}")
+time.sleep(5)
 
-            # Select the appropriate status element (assuming these statuses are radio buttons or similar)
-            status_element = driver.find_element(By.XPATH, f"//tbody/tr[1]/td[3]/div[1]/label[1]/span[1]'{selected_status}']")
-            status_element.click()
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+print(f"Is element visible? {is_displayed}")
 
-            # If 'Need Maintenance' is selected, add a note
-            if selected_status == "Need Maintenance":
-                print(f"Adding note for checkpoint {i} as 'Need Maintenance' is selected.")
-                note_input = driver.find_element(By.XPATH, "//input[@placeholder='Note']")
-                note_input.clear()
-                note_text = "Mandatory note for 'Need Maintenance'."
-                note_input.send_keys(note_text)
-                print(f"Note added: {note_text}")
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_2.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
-        except NoSuchElementException:
-            print(f"Checkpoint {i} not found: {checkpoint_id}. Moving to the next one.")
+try:
+    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    actions = ActionChains(driver)
+    actions.move_to_element(Entry_stage_element_2).click().perform()
+except:
+    pass
 
+time.sleep(5)
+
+try:
+    # Locate the 'Needs Maintenance' element
+    needs_maintenance_element = driver.find_element(By.XPATH, '//tbody/tr[3]/td[4]/div[1]/label[1]/span[1]')
+
+    # Check if the element is visible
+    is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", needs_maintenance_element)
+    print(f"Is 'Needs Maintenance' element visible? {is_displayed}")
+
+    if is_displayed:
+        # Click the 'Needs Maintenance' radio button
+        actions = ActionChains(driver)
+        actions.move_to_element(needs_maintenance_element).click().perform()
+        print("'Needs Maintenance' checkpoint clicked successfully.")
+
+        # Wait for the note field to appear
+        wait = WebDriverWait(driver, 10)  # Adjust timeout as needed
+        note_field = wait.until(EC.presence_of_element_located((By.XPATH, "//input[@placeholder='Note']")))
+
+        if note_field.is_displayed() and note_field.is_enabled():
+            # Clear any existing text in the note field
+            note_field.clear()
+            # Enter the mandatory note
+            mandatory_note = "Maintenance required for this checkpoint."
+            note_field.send_keys(mandatory_note)
+            print(f"Mandatory note added: {mandatory_note}")
+        else:
+            print("Note field is not visible or interactable. Cannot add a note.")
+    else:
+        print("'Needs Maintenance' element is not visible on the UI.")
+
+except TimeoutException:
+    print("Timeout while waiting for the note field to appear.")
 except NoSuchElementException as e:
-    print(f"Error: {str(e)} - Element not found.")
+    print(f"Element not found: {e}")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
 
-# try:
-#     need_maintenance_status = driver.find_element(By.XPATH, "//span[normalize-space()='Need Maintenance']")
-#     if need_maintenance_status.is_displayed():
-#         print("The Checkpoint Status is Need Maintenance: ")
-#
-#         note_input = driver.find_element(By.XPATH, "//input[@placeholder='Note']")
-#         note_input.clear()
-#         add_note = "The Note is mandatory for the Need Maintenance Checkpoint"
-#         note_input.send_keys(add_note)
-#
-#         first_entry_checkpoint = driver.find_element(By.ID, "تفقد زجاج الباص كامل2")
-#         first_entry_checkpoint.click()
-#
-#         second_entry_checkpoint = driver.find_element(By.ID, "طاسات عجال+الاطارات2")
-#         second_entry_checkpoint.click()
-#
-#         third_entry_checkpoint = driver.find_element(By.ID, "الهندام2")
-#         third_entry_checkpoint.click()
-#
-#         fourth_entry_checkpoint = driver.find_element(By.ID, "تاكوجراف1")
-#         fourth_entry_checkpoint.click()
-#
-#         fifth_entry_checkpoint = driver.find_element(By.ID, "الاضوية3")
-#         fifth_entry_checkpoint.click()
-#
-#         sixth_entry_checkpoint = driver.find_element(By.ID, "المرايا2")
-#         sixth_entry_checkpoint.click()
-#
-#         seventh_entry_checkpoint = driver.find_element(By.ID, "DVD2")
-#         seventh_entry_checkpoint.click()
-#
-#         eight_entry_checkpoint = driver.find_element(By.ID, "العدة اليدوية2")
-#         eight_entry_checkpoint.click()
-#
-#         ninth_entry_checkpoint = driver.find_element(By.ID, "الشاشات3")
-#         ninth_entry_checkpoint.click()
-#
-#         tenth_entry_checkpoint = driver.find_element(By.ID, "ميكرفون2")
-#         tenth_entry_checkpoint.click()
-#
-#     else:
-#         print("Invalid Status of the Chckpoint.")
+time.sleep(5)
 
-driver.quit()
+time.sleep(5)
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+print(f"Is element visible? {is_displayed}")
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_2.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+try:
+    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    actions = ActionChains(driver)
+    actions.move_to_element(Entry_stage_element_2).click().perform()
+except:
+    pass
+
+time.sleep(5)
+
+time.sleep(5)
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+print(f"Is element visible? {is_displayed}")
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_2.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+try:
+    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    actions = ActionChains(driver)
+    actions.move_to_element(Entry_stage_element_2).click().perform()
+except:
+    pass
+
+time.sleep(5)
+
+time.sleep(5)
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+print(f"Is element visible? {is_displayed}")
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_2.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+try:
+    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    actions = ActionChains(driver)
+    actions.move_to_element(Entry_stage_element_2).click().perform()
+except:
+    pass
+
+time.sleep(5)
+
+time.sleep(5)
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+print(f"Is element visible? {is_displayed}")
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_2.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+try:
+    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    actions = ActionChains(driver)
+    actions.move_to_element(Entry_stage_element_2).click().perform()
+except:
+    pass
+
+time.sleep(5)
+
+time.sleep(5)
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+print(f"Is element visible? {is_displayed}")
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_2.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+try:
+    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    actions = ActionChains(driver)
+    actions.move_to_element(Entry_stage_element_2).click().perform()
+except:
+    pass
+
+time.sleep(5)
+
+time.sleep(5)
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+print(f"Is element visible? {is_displayed}")
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_2.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+try:
+    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    actions = ActionChains(driver)
+    actions.move_to_element(Entry_stage_element_2).click().perform()
+except:
+    pass
+
+time.sleep(5)
+
+time.sleep(5)
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+print(f"Is element visible? {is_displayed}")
+
+Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_2.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+try:
+    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    actions = ActionChains(driver)
+    actions.move_to_element(Entry_stage_element_2).click().perform()
+except:
+    pass
+
+time.sleep(5)
+
