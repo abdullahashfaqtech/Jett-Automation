@@ -530,7 +530,7 @@ driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_6)
 time.sleep(3)
 scroll_element_6.click()
 time.sleep(4)
-# -----------------------------------Entry Stage Checklist----------------------------------------
+# -----------------------------------Entry Stage Checklist-----------------------------------------------
 
 
 Entry_stage_element_1 = driver.find_element(By.XPATH, '//span[@class="form-check-sign radio-checkbox font-14 InspectionToggle"]')
@@ -567,6 +567,7 @@ except:
 
 time.sleep(5)
 
+#----Need Maintenance Checkpoint
 try:
     # Locate the 'Needs Maintenance' element
     needs_maintenance_element = driver.find_element(By.XPATH, '//tbody/tr[3]/td[4]/div[1]/label[1]/span[1]')
@@ -606,136 +607,125 @@ except Exception as e:
 
 time.sleep(5)
 
-time.sleep(5)
-
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+Entry_stage_element_4 = driver.find_element(By.XPATH, '//tbody/tr[4]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_4)
 print(f"Is element visible? {is_displayed}")
 
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-rect = Entry_stage_element_2.rect
+Entry_stage_element_4 = driver.find_element(By.XPATH, '//tbody/tr[4]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_4.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
 try:
-    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    Entry_stage_element_4 = driver.find_element(By.XPATH, '//tbody/tr[4]/td[3]/div[1]/label[1]/span[1]')
     actions = ActionChains(driver)
-    actions.move_to_element(Entry_stage_element_2).click().perform()
+    actions.move_to_element(Entry_stage_element_4).click().perform()
 except:
     pass
 
 time.sleep(5)
 
-time.sleep(5)
-
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+Entry_stage_element_5 = driver.find_element(By.XPATH, '//tbody/tr[5]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_5)
 print(f"Is element visible? {is_displayed}")
 
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-rect = Entry_stage_element_2.rect
+Entry_stage_element_5 = driver.find_element(By.XPATH, '//tbody/tr[5]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_5.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
 try:
-    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    Entry_stage_element_5 = driver.find_element(By.XPATH, '//tbody/tr[5]/td[3]/div[1]/label[1]/span[1]')
     actions = ActionChains(driver)
-    actions.move_to_element(Entry_stage_element_2).click().perform()
+    actions.move_to_element(Entry_stage_element_5).click().perform()
 except:
     pass
 
 time.sleep(5)
 
-time.sleep(5)
-
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+Entry_stage_element_6 = driver.find_element(By.XPATH, '//tbody/tr[6]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_6)
 print(f"Is element visible? {is_displayed}")
 
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-rect = Entry_stage_element_2.rect
+Entry_stage_element_6 = driver.find_element(By.XPATH, '//tbody/tr[6]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_6.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
 try:
-    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    Entry_stage_element_6 = driver.find_element(By.XPATH, '//tbody/tr[6]/td[3]/div[1]/label[1]/span[1]')
     actions = ActionChains(driver)
-    actions.move_to_element(Entry_stage_element_2).click().perform()
+    actions.move_to_element(Entry_stage_element_6).click().perform()
 except:
     pass
 
 time.sleep(5)
 
-time.sleep(5)
-
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+Entry_stage_element_7 = driver.find_element(By.XPATH, '//tbody/tr[7]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_7)
 print(f"Is element visible? {is_displayed}")
 
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-rect = Entry_stage_element_2.rect
+Entry_stage_element_7 = driver.find_element(By.XPATH, '//tbody/tr[7]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_7.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
 try:
-    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    Entry_stage_element_7 = driver.find_element(By.XPATH, '//tbody/tr[7]/td[3]/div[1]/label[1]/span[1]')
     actions = ActionChains(driver)
-    actions.move_to_element(Entry_stage_element_2).click().perform()
+    actions.move_to_element(Entry_stage_element_7).click().perform()
 except:
     pass
 
 time.sleep(5)
 
-time.sleep(5)
-
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+Entry_stage_element_8 = driver.find_element(By.XPATH, '//tbody/tr[8]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_8)
 print(f"Is element visible? {is_displayed}")
 
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-rect = Entry_stage_element_2.rect
+Entry_stage_element_8 = driver.find_element(By.XPATH, '//tbody/tr[8]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_8.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
 try:
-    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    Entry_stage_element_8 = driver.find_element(By.XPATH, '//tbody/tr[8]/td[3]/div[1]/label[1]/span[1]')
     actions = ActionChains(driver)
-    actions.move_to_element(Entry_stage_element_2).click().perform()
+    actions.move_to_element(Entry_stage_element_8).click().perform()
 except:
     pass
 
 time.sleep(5)
 
-time.sleep(5)
-
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+Entry_stage_element_9 = driver.find_element(By.XPATH, '//tbody/tr[9]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_9)
 print(f"Is element visible? {is_displayed}")
 
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-rect = Entry_stage_element_2.rect
+Entry_stage_element_9 = driver.find_element(By.XPATH, '//tbody/tr[9]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_9.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
 try:
-    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    Entry_stage_element_9 = driver.find_element(By.XPATH, '//tbody/tr[9]/td[3]/div[1]/label[1]/span[1]')
     actions = ActionChains(driver)
-    actions.move_to_element(Entry_stage_element_2).click().perform()
+    actions.move_to_element(Entry_stage_element_9).click().perform()
 except:
     pass
 
 time.sleep(5)
 
-time.sleep(5)
-
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_2)
+Entry_stage_element_10 = driver.find_element(By.XPATH, '//tbody/tr[10]/td[3]/div[1]/label[1]/span[1]')
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_10)
 print(f"Is element visible? {is_displayed}")
 
-Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
-rect = Entry_stage_element_2.rect
+Entry_stage_element_10 = driver.find_element(By.XPATH, '//tbody/tr[10]/td[3]/div[1]/label[1]/span[1]')
+rect = Entry_stage_element_10.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
 try:
-    Entry_stage_element_2 = driver.find_element(By.XPATH, '//tbody/tr[2]/td[3]/div[1]/label[1]/span[1]')
+    Entry_stage_element_10 = driver.find_element(By.XPATH, '//tbody/tr[10]/td[3]/div[1]/label[1]/span[1]')
     actions = ActionChains(driver)
-    actions.move_to_element(Entry_stage_element_2).click().perform()
+    actions.move_to_element(Entry_stage_element_10).click().perform()
 except:
     pass
 
 time.sleep(5)
+
+create_Job_btn = driver.find_element(By.XPATH, "//button[@type='submit']")
+create_Job_btn.click()
 
