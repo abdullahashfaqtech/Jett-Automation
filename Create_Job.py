@@ -726,6 +726,14 @@ except:
 
 time.sleep(5)
 
-create_Job_btn = driver.find_element(By.XPATH, "//button[@type='submit']")
-create_Job_btn.click()
+# scroll_element_7 = driver.find_element(By.CLASS_NAME, "btn")
+# driver.execute_script("arguments[0].scrollIntoView(true);", scroll_element_7)
+# time.sleep(3)
+# scroll_element_7.click()
+# time.sleep(4)
 
+create_Job_btn = driver.find_element(By.XPATH, "//button[@type='submit']")
+print("The system finds the create job path successfully")
+create_Job_btn.click()
+print("The Create Job button has been clicked successfully:")
+time.sleep(10)
