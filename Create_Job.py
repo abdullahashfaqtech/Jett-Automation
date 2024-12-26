@@ -4,11 +4,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
+from openpyxl import Workbook, load_workbook
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 import random
-
-# import os
+import os
 
 # from selenium.webdriver.chrome.service import Service
 
@@ -521,7 +521,8 @@ save_br_concern.click()
 print("The Save & Add button has been clicked by the bot to add the Body Repair Concern:")
 time.sleep(4)
 
-close_customer_concern_pop_up = driver.find_element(By.XPATH, "//button[@class='btn btn-primary btn-round btn-simple m-0 mb-3']")
+close_customer_concern_pop_up = driver.find_element(By.XPATH,
+                                                    "//button[@class='btn btn-primary btn-round btn-simple m-0 mb-3']")
 close_customer_concern_pop_up.click()
 print("The Add Concern Pop-up has been closed:")
 
@@ -533,16 +534,19 @@ time.sleep(4)
 # -----------------------------------Entry Stage Checklist-----------------------------------------------
 
 
-Entry_stage_element_1 = driver.find_element(By.XPATH, '//span[@class="form-check-sign radio-checkbox font-14 InspectionToggle"]')
+Entry_stage_element_1 = driver.find_element(By.XPATH,
+                                            '//span[@class="form-check-sign radio-checkbox font-14 InspectionToggle"]')
 is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", Entry_stage_element_1)
 print(f"Is element visible? {is_displayed}")
 
-Entry_stage_element_1 = driver.find_element(By.XPATH, '//span[@class="form-check-sign radio-checkbox font-14 InspectionToggle"]')
+Entry_stage_element_1 = driver.find_element(By.XPATH,
+                                            '//span[@class="form-check-sign radio-checkbox font-14 InspectionToggle"]')
 rect = Entry_stage_element_1.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
 try:
-    Entry_stage_element_1 = driver.find_element(By.XPATH, '//span[@class="form-check-sign radio-checkbox font-14 InspectionToggle"]')
+    Entry_stage_element_1 = driver.find_element(By.XPATH,
+                                                '//span[@class="form-check-sign radio-checkbox font-14 InspectionToggle"]')
     actions = ActionChains(driver)
     actions.move_to_element(Entry_stage_element_1).click().perform()
 except:
@@ -737,3 +741,27 @@ print("The system finds the create job path successfully")
 create_Job_btn.click()
 print("The Create Job button has been clicked successfully:")
 time.sleep(10)
+
+# Define the file name
+file_name = "job_card_data.xlsx"
+
+# Job card number to store
+job_card_number = "AQ01022410"
+
+# Check if the file exists
+try:
+    workbook = load_workbook(file_name)
+    sheet = workbook.active
+except FileNotFoundError:
+    # Create a new workbook and sheet if file doesn't exist
+    workbook = Workbook()
+    sheet = workbook.active
+    sheet.append(["Job Card Number"])  # Add header row
+
+# Append the new job card number
+sheet.append([job_card_number])
+workbook.save(file_name)
+workbook.close()
+
+print(f"Job card number {job_card_number} has been stored in {file_name}.")
+

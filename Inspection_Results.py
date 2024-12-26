@@ -4,10 +4,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from openpyxl import load_workbook
+from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, ElementNotInteractableException, TimeoutException
-
 # import random
-# import os
+import os
 
 # from selenium.webdriver.chrome.service import Service
 
@@ -73,36 +74,62 @@ driver.find_element(By.XPATH,
                     "/html[1]/body[1]/app-root[1]/app-full-layout[1]/div[1]/nav[1]/div[1]/div[3]/div[1]/ng-select[1]/ng-dropdown-panel[1]/div[1]/div[2]/div[3]/span[1]").click()
 
 print("The Specific branch Aqaba has been selected:")
-time.sleep(5)
+time.sleep(10)
+
+#---------------------Filter the newly created Job Card.
+
+
+
+# Define the file namefile_name = "job_card_data.xlsx"
+
+# Open the workbook and get the active sheet
+workbook = load_workbook(file_name)
+sheet = workbook.active
+
+# Get the last row
+last_row = sheet.max_row
+job_card_number = sheet.cell(row=last_row, column=1).value
+workbook.close()
+
+print(f"The latest job card number is: {job_card_number}")
+
+# Selenium code to use the job card number
+filter_btn = driver.find_element(By.XPATH, "//button[@id='togglefilter']")
+filter_btn.click()
+
+Job_filter = driver.find_element(By.ID, "JobFilterInputID")  # Replace with the actual ID of the filter input
+Job_filter.send_keys(job_card_number)
 
 # ir_inspection_tab = driver.find_element(By.XPATH, "//span[@class='light-bold'][normalize-space()='In Progress']")
 # print("The system finds the Inspection In-Progress tab.")
 # ir_inspection_tab.click()
 # print("The In-Progress Sub_Tab has been selected: ")
 
-try:
-    # Wait until the job card element is visible and enabled
-    wait = WebDriverWait(driver, 10)  # 10 seconds timeout
-    selected_job_card = wait.until(EC.element_to_be_clickable((By.NAME, "AQ01022410")))
+# try:
+#     # Wait until the job card element is visible and enabled
+#     wait = WebDriverWait(driver, 10)  # 10 seconds timeout
+#     selected_job_card = wait.until(EC.element_to_be_clickable((By.NAME, "AQ16122401")))
 
-    if selected_job_card.is_displayed():
-        print("The system finds the selected Job Card.")
 
-        # Optional: Move to element before clicking (in case it's partially visible)
-        ActionChains(driver).move_to_element(selected_job_card).perform()
 
-        selected_job_card.click()
-    else:
-        print("Job Card is not visible.")
-
-except TimeoutException:
-    print("Job Card was not found within the given timeout.")
-except ElementNotInteractableException:
-    print("Job Card is not interactable.")
-except NoSuchElementException:
-    print("Job Card with the specified name does not exist.")
-except Exception as e:
-    print(f"An unexpected error occurred: {e}")
+#     if selected_job_card.is_displayed():
+#         print("The system finds the selected Job Card.")
+#
+#         # Optional: Move to element before clicking (in case it's partially visible)
+#         ActionChains(driver).move_to_element(selected_job_card).perform()
+#
+#         selected_job_card.click()
+#     else:
+#         print("Job Card is not visible.")
+#
+# except TimeoutException:
+#     print("Job Card was not found within the given timeout.")
+# except ElementNotInteractableException:
+#     print("Job Card is not interactable.")
+# except NoSuchElementException:
+#     print("Job Card with the specified name does not exist.")
+# except Exception as e:
+#     print(f"An unexpected error occurred: {e}")
 
 assign_inspection_results = driver.find_element(By.XPATH,
                                                 "//div[13]//div[3]//div[1]//ul[1]//div[1]//nav[1]//div[1]//li[2]//a[1]//div[1]//span[1]//span[1]//i[2]")
@@ -127,6 +154,8 @@ Log_out_admin = driver.find_element(By.XPATH, "//i[@class='fa fa-power-off']")
 Log_out_admin.click()
 time.sleep(5)
 
+#----------------------------------Inspection Technician Log-In to work on the assigned tasks.-----
+
 clear_email_field = driver.find_element(By.XPATH, "//input[@name='email']")
 clear_email_field.clear()
 
@@ -134,8 +163,6 @@ clear_password_field = driver.find_element(By.XPATH, "//input[@name='password']"
 clear_password_field.clear()
 
 time.sleep(5)
-
-#----------------------------------Inspection Technician Log-In to work on the assigned tasks.-----
 
 email = "supervisor@autohub.jo"
 old_password = "P@$$w0rd@autohub"
