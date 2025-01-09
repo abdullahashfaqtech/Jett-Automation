@@ -20,7 +20,7 @@ driver.get("https://jett.autohub.jo/auth/login")
 # ----------------------------------------Generic Log-In Handling----------------------------------
 
 email = "admin@jett.com"
-old_password = "P@$$w0rd@autohub"
+old_password = "12341234"
 new_password = "123123"
 
 driver.find_element(By.NAME, "email").send_keys(email)
@@ -76,74 +76,47 @@ driver.find_element(By.XPATH,
 print("The Specific branch Aqaba has been selected:")
 time.sleep(10)
 
-#---------------------Filter the newly created Job Card.
-
-
-
-# Define the file namefile_name = "job_card_data.xlsx"
-
-# Open the workbook and get the active sheet
-workbook = load_workbook(file_name)
-sheet = workbook.active
-
-# Get the last row
-last_row = sheet.max_row
-job_card_number = sheet.cell(row=last_row, column=1).value
-workbook.close()
-
-print(f"The latest job card number is: {job_card_number}")
+#---------------------Filter the newly created Job Card and assign the Supervisor to the Job Card-------.
 
 # Selenium code to use the job card number
 filter_btn = driver.find_element(By.XPATH, "//button[@id='togglefilter']")
+print("The Bot finds the Filter Path:")
 filter_btn.click()
+print("The filter button has been clicked by the Bot:")
+time.sleep(3)
 
-Job_filter = driver.find_element(By.ID, "JobFilterInputID")  # Replace with the actual ID of the filter input
-Job_filter.send_keys(job_card_number)
+Job_filter_with_Job_Card_Number = driver.find_element(By.XPATH, "//input[@placeholder='Job Number, Customer Name or Plate Number']")
+print("The system finds the filter field path successfully:")
+Job_filter_with_Job_Card_Number.send_keys("AQ16122401")
+print("The bot successfully enter the Job Card Number to the filter field:")
+time.sleep(3)
 
-# ir_inspection_tab = driver.find_element(By.XPATH, "//span[@class='light-bold'][normalize-space()='In Progress']")
-# print("The system finds the Inspection In-Progress tab.")
-# ir_inspection_tab.click()
-# print("The In-Progress Sub_Tab has been selected: ")
-
-# try:
-#     # Wait until the job card element is visible and enabled
-#     wait = WebDriverWait(driver, 10)  # 10 seconds timeout
-#     selected_job_card = wait.until(EC.element_to_be_clickable((By.NAME, "AQ16122401")))
-
-
-
-#     if selected_job_card.is_displayed():
-#         print("The system finds the selected Job Card.")
-#
-#         # Optional: Move to element before clicking (in case it's partially visible)
-#         ActionChains(driver).move_to_element(selected_job_card).perform()
-#
-#         selected_job_card.click()
-#     else:
-#         print("Job Card is not visible.")
-#
-# except TimeoutException:
-#     print("Job Card was not found within the given timeout.")
-# except ElementNotInteractableException:
-#     print("Job Card is not interactable.")
-# except NoSuchElementException:
-#     print("Job Card with the specified name does not exist.")
-# except Exception as e:
-#     print(f"An unexpected error occurred: {e}")
+apply_filter_btn = driver.find_element(By.XPATH, "//button[@id='getJobListBtn']")
+print("The bot finds the Apply button path")
+apply_filter_btn.click()
+print("The Apply button has been successfully clicked by the bot:")
+time.sleep(5)
 
 assign_inspection_results = driver.find_element(By.XPATH,
-                                                "//div[13]//div[3]//div[1]//ul[1]//div[1]//nav[1]//div[1]//li[2]//a[1]//div[1]//span[1]//span[1]//i[2]")
+                                                "//li[contains(@class,'pn-ProductNav_LinkOne current-process')]//i[contains(@class,'fas fa-edit mx-1 primary-dark-font')]")
+print("The bot finds the assign IR button successfully: ")
 assign_inspection_results.click()
+print("The assign IR button has been clicked by the bot:")
 time.sleep(5)
 
 inspection_results_dropdown = driver.find_element(By.XPATH,
-                                                  "//ng-select[@id='Inspection Results1']//span[contains(@class,'ng-arrow-wrapper')]")
+                                                  "//ng-select[@id='Inspection Results1']//input[contains(@role,'combobox')]")
+print("The bot finds the path of the IR dropdown:")
 inspection_results_dropdown.click()
+print("The IR dropdown click by the bot:")
 time.sleep(2)
 
-select_specific_inspection_technician = driver.find_element(By.ID, "a2e41f9cd906-4")
+select_specific_inspection_technician = driver.find_element(By.XPATH, "//div[@id='ad976e384421-4']//span[contains(@class,'ng-option-label')]//span[1]")
 
+print("The bot finds the specific IR technician path successfully:")
+driver.execute_script("arguments[0].scrollIntoView(true);", select_specific_inspection_technician)
 select_specific_inspection_technician.click()
+print("The specific IR technician has been selected by the bot:")
 time.sleep(2)
 
 save_ir_technician = driver.find_element(By.XPATH, "//button[normalize-space()='Yes']")
