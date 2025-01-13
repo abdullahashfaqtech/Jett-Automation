@@ -79,48 +79,48 @@ time.sleep(10)
 #---------------------Filter the newly created Job Card and assign the Supervisor to the Job Card-------.
 
 # Selenium code to use the job card number
-filter_btn = driver.find_element(By.XPATH, "//button[@id='togglefilter']")
+Admin_filter_btn = driver.find_element(By.XPATH, "//button[@id='togglefilter']")
 print("The Bot finds the Filter Path:")
-filter_btn.click()
+Admin_filter_btn.click()
 print("The filter button has been clicked by the Bot:")
 time.sleep(3)
 
-Job_filter_with_Job_Card_Number = driver.find_element(By.XPATH, "//input[@placeholder='Job Number, Customer Name or Plate Number']")
+Admin_Job_filter_with_Job_Card_Number = driver.find_element(By.XPATH, "//input[@placeholder='Job Number, Customer Name or Plate Number']")
 print("The system finds the filter field path successfully:")
-Job_filter_with_Job_Card_Number.send_keys("AQ16122401")
+Admin_Job_filter_with_Job_Card_Number.send_keys("AQ16122401")
 print("The bot successfully enter the Job Card Number to the filter field:")
 time.sleep(3)
 
-apply_filter_btn = driver.find_element(By.XPATH, "//button[@id='getJobListBtn']")
+Admin_apply_filter_btn = driver.find_element(By.XPATH, "//button[@id='getJobListBtn']")
 print("The bot finds the Apply button path")
-apply_filter_btn.click()
+Admin_apply_filter_btn.click()
 print("The Apply button has been successfully clicked by the bot:")
 time.sleep(5)
 
-assign_inspection_results = driver.find_element(By.XPATH,
+Admin_assign_inspection_results = driver.find_element(By.XPATH,
                                                 "//li[contains(@class,'pn-ProductNav_LinkOne current-process')]//i[contains(@class,'fas fa-edit mx-1 primary-dark-font')]")
 print("The bot finds the assign IR button successfully: ")
-assign_inspection_results.click()
+Admin_assign_inspection_results.click()
 print("The assign IR button has been clicked by the bot:")
 time.sleep(5)
 
-inspection_results_dropdown = driver.find_element(By.XPATH,
+Admin_inspection_results_dropdown = driver.find_element(By.XPATH,
                                                   "//ng-select[@id='Inspection Results1']//input[contains(@role,'combobox')]")
 print("The bot finds the path of the IR dropdown:")
-inspection_results_dropdown.click()
+Admin_inspection_results_dropdown.click()
 print("The IR dropdown click by the bot:")
 time.sleep(2)
 
-select_specific_inspection_technician = driver.find_element(By.XPATH, "//div[@id='ad976e384421-4']//span[contains(@class,'ng-option-label')]//span[1]")
+Admin_select_specific_inspection_technician = driver.find_element(By.XPATH, "//span[contains(text(),' بلال منصور (Supervisor)')]")
 
 print("The bot finds the specific IR technician path successfully:")
-driver.execute_script("arguments[0].scrollIntoView(true);", select_specific_inspection_technician)
-select_specific_inspection_technician.click()
+driver.execute_script("arguments[0].scrollIntoView(true);", Admin_select_specific_inspection_technician)
+Admin_select_specific_inspection_technician.click()
 print("The specific IR technician has been selected by the bot:")
 time.sleep(2)
 
-save_ir_technician = driver.find_element(By.XPATH, "//button[normalize-space()='Yes']")
-save_ir_technician.click()
+Admin_save_ir_technician = driver.find_element(By.XPATH, "//button[normalize-space()='Yes']")
+Admin_save_ir_technician.click()
 time.sleep(5)
 
 Log_out_admin = driver.find_element(By.XPATH, "//i[@class='fa fa-power-off']")
@@ -138,7 +138,7 @@ clear_password_field.clear()
 time.sleep(5)
 
 email = "supervisor@autohub.jo"
-old_password = "P@$$w0rd@autohub"
+old_password = "123123"
 new_password = "123456"
 
 driver.find_element(By.NAME, "email").send_keys(email)
@@ -194,35 +194,28 @@ driver.find_element(By.XPATH,
 print("The Specific branch Aqaba has been selected:")
 time.sleep(5)
 
-# -------------------Find the specific Job Card to interact with----------------
+# -------------------Filter the selected Job Card for IR--------------
 
-try:
-    # Wait until the job card element is visible and enabled
-    wait = WebDriverWait(driver, 10)  # 10 seconds timeout
-    selected_job_card = wait.until(EC.element_to_be_clickable((By.NAME, "AQ03122402")))
+Supervisor_filter_btn = driver.find_element(By.XPATH, "//button[@id='togglefilter']")
+print("The Bot finds the Filter Path:")
+Supervisor_filter_btn.click()
+print("The filter button has been clicked by the Bot:")
+time.sleep(3)
 
-    if selected_job_card.is_displayed():
-        print("The system finds the selected Job Card.")
+Supervisor_Job_filter_with_Job_Card_Number = driver.find_element(By.XPATH, "//input[@placeholder='Job Number, Customer Name or Plate Number']")
+print("The system finds the filter field path successfully:")
+Supervisor_Job_filter_with_Job_Card_Number.send_keys("AQ16122401")
+print("The bot successfully enter the Job Card Number to the filter field:")
+time.sleep(3)
 
-        # Optional: Move to element before clicking (in case it's partially visible)
-        ActionChains(driver).move_to_element(selected_job_card).perform()
+Supervisor_apply_filter_btn = driver.find_element(By.XPATH, "//button[@id='getJobListBtn']")
+print("The bot finds the Apply button path")
+Supervisor_apply_filter_btn.click()
+print("The Apply button has been successfully clicked by the bot:")
+time.sleep(5)
 
-        selected_job_card.click()
-    else:
-        print("Job Card is not visible.")
-
-except TimeoutException:
-    print("Job Card was not found within the given timeout.")
-except ElementNotInteractableException:
-    print("Job Card is not interactable.")
-except NoSuchElementException:
-    print("Job Card with the specified name does not exist.")
-except Exception as e:
-    print(f"An unexpected error occurred: {e}")
-
-dashboard_edit_button = driver.find_element(By.XPATH,
-                                            "//div[@id='job-list']//div[1]//div[1]//div[2]//div[1]//div[1]//span[1]//i[2]")
-dashboard_edit_button.click()
+dashboard_edit_btn = driver.find_element(By.XPATH, "//i[@title='Edit']")
+dashboard_edit_btn.click()
 time.sleep(8)
 
 select_services_tab = driver.find_element(By.XPATH, "//span[@class='nav-text small-font primary-font']")
