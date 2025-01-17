@@ -221,3 +221,21 @@ time.sleep(8)
 select_services_tab = driver.find_element(By.XPATH, "//span[@class='nav-text small-font primary-font']")
 select_services_tab.click()
 time.sleep(5)
+
+# ------------------------------------Daily Checklist---------------------------
+
+daily_checkpoint_1 = driver.find_element(By.XPATH,"//tbody/tr[1]/td[2]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", daily_checkpoint_1)
+print(f"Is Element Visible? {is_displayed}")
+
+daily_checkpoint_1 = driver.find_element(By.XPATH, "//tbody/tr[1]/td[2]/div[1]/label[1]/span[1]")
+rect = daily_checkpoint_1.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+try:
+    daily_checkpoint_1 = driver.find_element(By.XPATH, "//tbody/tr[1]/td[2]/div[1]/label[1]/span[1]")
+    actions = ActionChains(driver)
+    actions.move_to_element(daily_checkpoint_1).click().perform()
+except:
+    pass
+
