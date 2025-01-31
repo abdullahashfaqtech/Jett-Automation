@@ -239,3 +239,16 @@ try:
 except:
     pass
 
+daily_checkpoint_2 = driver.find_element(By.XPATH, "//tbody/tr[2]/td[2]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_2)
+print(f"Is Element Visible? {is_displayed}")
+
+daily_checkpoint_2 = driver.find(By.XPATH, "//tbody/tr[2]/td[2]/div[1]/label[1]/span[1]")
+rect = daily_checkpoint_2.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+try:
+    daily_checkpoint_2 = driver.find_element(By.XPATH, "//tbody/tr[2]/td[2]/div[1]/label[1]/span[1]")
+    actions = ActionChains(driver)
+    actions.move_to_element(daily_checkpoint_2).click().perform()
+except:
+    pass
