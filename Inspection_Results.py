@@ -85,7 +85,8 @@ Admin_filter_btn.click()
 print("The filter button has been clicked by the Bot:")
 time.sleep(3)
 
-Admin_Job_filter_with_Job_Card_Number = driver.find_element(By.XPATH, "//input[@placeholder='Job Number, Customer Name or Plate Number']")
+Admin_Job_filter_with_Job_Card_Number = driver.find_element(By.XPATH,
+                                                            "//input[@placeholder='Job Number, Customer Name or Plate Number']")
 print("The system finds the filter field path successfully:")
 Admin_Job_filter_with_Job_Card_Number.send_keys("AQ16122401")
 print("The bot successfully enter the Job Card Number to the filter field:")
@@ -98,20 +99,21 @@ print("The Apply button has been successfully clicked by the bot:")
 time.sleep(5)
 
 Admin_assign_inspection_results = driver.find_element(By.XPATH,
-                                                "//li[contains(@class,'pn-ProductNav_LinkOne current-process')]//i[contains(@class,'fas fa-edit mx-1 primary-dark-font')]")
+                                                      "//li[contains(@class,'pn-ProductNav_LinkOne current-process')]//i[contains(@class,'fas fa-edit mx-1 primary-dark-font')]")
 print("The bot finds the assign IR button successfully: ")
 Admin_assign_inspection_results.click()
 print("The assign IR button has been clicked by the bot:")
 time.sleep(5)
 
 Admin_inspection_results_dropdown = driver.find_element(By.XPATH,
-                                                  "//ng-select[@id='Inspection Results1']//input[contains(@role,'combobox')]")
+                                                        "//ng-select[@id='Inspection Results1']//input[contains(@role,'combobox')]")
 print("The bot finds the path of the IR dropdown:")
 Admin_inspection_results_dropdown.click()
 print("The IR dropdown click by the bot:")
 time.sleep(2)
 
-Admin_select_specific_inspection_technician = driver.find_element(By.XPATH, "//span[contains(text(),' بلال منصور (Supervisor)')]")
+Admin_select_specific_inspection_technician = driver.find_element(By.XPATH,
+                                                                  "//span[contains(text(),' بلال منصور (Supervisor)')]")
 
 print("The bot finds the specific IR technician path successfully:")
 driver.execute_script("arguments[0].scrollIntoView(true);", Admin_select_specific_inspection_technician)
@@ -202,7 +204,8 @@ Supervisor_filter_btn.click()
 print("The filter button has been clicked by the Bot:")
 time.sleep(3)
 
-Supervisor_Job_filter_with_Job_Card_Number = driver.find_element(By.XPATH, "//input[@placeholder='Job Number, Customer Name or Plate Number']")
+Supervisor_Job_filter_with_Job_Card_Number = driver.find_element(By.XPATH,
+                                                                 "//input[@placeholder='Job Number, Customer Name or Plate Number']")
 print("The system finds the filter field path successfully:")
 Supervisor_Job_filter_with_Job_Card_Number.send_keys("AQ16122401")
 print("The bot successfully enter the Job Card Number to the filter field:")
@@ -214,9 +217,17 @@ Supervisor_apply_filter_btn.click()
 print("The Apply button has been successfully clicked by the bot:")
 time.sleep(5)
 
-dashboard_edit_btn = driver.find_element(By.XPATH, "//i[@title='Edit']")
-dashboard_edit_btn.click()
-time.sleep(8)
+dashboard_action_btn = driver.find_element(By.XPATH, "//div[@class='col-2 dropdown']//button[@id='dropdownMenuButton']")
+print("The bot finds the action dropdown path:")
+dashboard_action_btn.click()
+print("The bot click on the action dropdown:")
+time.sleep(3)
+
+dashboard_edit_jobCard_btn = driver.find_element(By.XPATH, "//div[@class='dropdown-menu show']//i[@title='Edit']")
+print("The bot finds the edit button path")
+dashboard_edit_jobCard_btn.click()
+print("The bot click on the edit button path")
+time.sleep(3)
 
 select_services_tab = driver.find_element(By.XPATH, "//span[@class='nav-text small-font primary-font']")
 select_services_tab.click()
@@ -224,7 +235,7 @@ time.sleep(5)
 
 # ------------------------------------Daily Checklist---------------------------
 
-daily_checkpoint_1 = driver.find_element(By.XPATH,"//tbody/tr[1]/td[2]/div[1]/label[1]/span[1]")
+daily_checkpoint_1 = driver.find_element(By.XPATH, "//tbody/tr[1]/td[2]/div[1]/label[1]/span[1]")
 is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", daily_checkpoint_1)
 print(f"Is Element Visible? {is_displayed}")
 
@@ -243,7 +254,7 @@ daily_checkpoint_2 = driver.find_element(By.XPATH, "//tbody/tr[2]/td[2]/div[1]/l
 is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_2)
 print(f"Is Element Visible? {is_displayed}")
 
-daily_checkpoint_2 = driver.find(By.XPATH, "//tbody/tr[2]/td[2]/div[1]/label[1]/span[1]")
+daily_checkpoint_2 = driver.find_element(By.XPATH, "//tbody/tr[2]/td[2]/div[1]/label[1]/span[1]")
 rect = daily_checkpoint_2.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 try:
@@ -252,3 +263,19 @@ try:
     actions.move_to_element(daily_checkpoint_2).click().perform()
 except:
     pass
+
+daily_checkpoint_3 = driver.find_element(By.XPATH, "//tbody/tr[3]/td[3]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_3)
+print(f"Is Element Visible? {is_displayed}")
+
+daily_checkpoint_3 = driver.find_element(By.XPATH, "//tbody/tr[3]/td[3]/div[1]/label[1]/span[1]")
+rect = daily_checkpoint_3.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+try:
+    daily_checkpoint_3 = driver.find_element(By.XPATH, "//tbody/tr[3]/td[3]/div[1]/label[1]/span[1]")
+    actions = ActionChains(driver)
+    actions.move_to_element(daily_checkpoint_3).click().perform()
+except:
+    pass
+
+
