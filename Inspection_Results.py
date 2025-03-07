@@ -233,49 +233,76 @@ select_services_tab = driver.find_element(By.XPATH, "//span[@class='nav-text sma
 select_services_tab.click()
 time.sleep(5)
 
-# ------------------------------------Daily Checklist---------------------------
+# ---------------------------------------------Daily Checklist------------------------------------------------
 
 daily_checkpoint_1 = driver.find_element(By.XPATH, "//tbody/tr[1]/td[2]/div[1]/label[1]/span[1]")
+# Check if the element is visible on the page
 is_displayed = driver.execute_script("return arguments[0].offsetParent !== null;", daily_checkpoint_1)
 print(f"Is Element Visible? {is_displayed}")
 
-daily_checkpoint_1 = driver.find_element(By.XPATH, "//tbody/tr[1]/td[2]/div[1]/label[1]/span[1]")
+# Get element dimensions
 rect = daily_checkpoint_1.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
-try:
-    daily_checkpoint_1 = driver.find_element(By.XPATH, "//tbody/tr[1]/td[2]/div[1]/label[1]/span[1]")
+# Check if the checkbox is already selected (checked)
+checkbox_input_1 = driver.find_element(By.XPATH, "//tbody/tr[1]/td[2]/div[1]/label[1]/input")  # Adjust this if needed
+
+if not checkbox_input_1.is_selected():  # Click only if it's not already checked
+    print("Checkpoint 1 is NOT checked. Clicking to check it.")
     actions = ActionChains(driver)
     actions.move_to_element(daily_checkpoint_1).click().perform()
-except:
-    pass
+else:
+    print("Checkpoint 1 is already checked. Skipping...")
+
+
+time.sleep(3)
 
 daily_checkpoint_2 = driver.find_element(By.XPATH, "//tbody/tr[2]/td[2]/div[1]/label[1]/span[1]")
 is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_2)
 print(f"Is Element Visible? {is_displayed}")
 
-daily_checkpoint_2 = driver.find_element(By.XPATH, "//tbody/tr[2]/td[2]/div[1]/label[1]/span[1]")
 rect = daily_checkpoint_2.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
-try:
-    daily_checkpoint_2 = driver.find_element(By.XPATH, "//tbody/tr[2]/td[2]/div[1]/label[1]/span[1]")
+
+checkbox_input_2 = driver.find_element(By.XPATH, "//tbody/tr[2]/td[2]/div[1]/label[1]/span[1]")
+
+if not checkbox_input_2.is_selected():
+    print("Checkpoint 2 is NOT checked. Clicking to check it.")
     actions = ActionChains(driver)
     actions.move_to_element(daily_checkpoint_2).click().perform()
-except:
-    pass
+else:
+    print("Checkpoint 2 is already checked. Skipping...")
+
+time.sleep(3)
 
 daily_checkpoint_3 = driver.find_element(By.XPATH, "//tbody/tr[3]/td[3]/div[1]/label[1]/span[1]")
 is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_3)
 print(f"Is Element Visible? {is_displayed}")
 
-daily_checkpoint_3 = driver.find_element(By.XPATH, "//tbody/tr[3]/td[3]/div[1]/label[1]/span[1]")
 rect = daily_checkpoint_3.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
-try:
-    daily_checkpoint_3 = driver.find_element(By.XPATH, "//tbody/tr[3]/td[3]/div[1]/label[1]/span[1]")
+
+checkbox_input_3 = driver.find_element(By.XPATH, "//tbody/tr[3]/td[3]/div[1]/label[1]/span[1]")
+
+if not checkbox_input_3.is_selected():
+    print("Checkpoint 3 is NOT checked. Clicking to check it.")
     actions = ActionChains(driver)
     actions.move_to_element(daily_checkpoint_3).click().perform()
-except:
-    pass
 
+time.sleep(3)
+
+daily_checkpoint_4 = driver.find_element(By.XPATH, "//tbody/tr[4]/td[4]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_4)
+print(f"Is Element Visible? {is_displayed}")
+
+rect = daily_checkpoint_4.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+checkbox_input_4 = driver.find_element(By.XPATH, "//tbody/tr[4]/td[4]/div[1]/label[1]/span[1]")
+if not checkbox_input_4.is_selected():
+    print("Checkpoint 3 is NOT checked. Clicking to check it.")
+    actions = ActionChains(driver)
+    actions.move_to_element(daily_checkpoint_4).click().perform()
+else:
+    print("Checkpoint 4 is already checked. Skipping...")
 
