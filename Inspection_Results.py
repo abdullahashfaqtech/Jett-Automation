@@ -393,18 +393,152 @@ else:
 time.sleep(4)
 
 # Checkpoint 9 status "Need Maintenance"
-
 daily_checkpoint_9 = driver.find_element(By.XPATH, "//tbody/tr[9]/td[3]/div[1]/label[1]/span[1]")
 is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_9)
-print(f"Is Element Vosible?{is_displayed}")
+print(f"Is Element Visible?{is_displayed}")
 
 rect = daily_checkpoint_9.rect
 print(f"Element dimensions: {rect['width']}x{rect['height']}")
 
 checkbox_input_9 = driver.find_element(By.XPATH, "//tbody/tr[9]/td[3]/div[1]/label[1]/span[1]")
-if not checkbox_input_9.is_selected()
+if not checkbox_input_9.is_selected():
     print("Checkpoint 9 is Not clicked. skipping...")
 else:
     print("Checkpoint 9 is already checked. skipping...")
 
 time.sleep(4)
+
+# Checkpoint 10 status "Need Maintenance"
+daily_checkpoint_10 = driver.find_element(By.XPATH, "//tbody/tr[10]/td[2]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_10)
+print(f"Is Element Visible?{is_displayed}")
+
+rect = daily_checkpoint_10.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+checkbox_input_10 = driver.find_element(By.XPATH, "//tbody/tr[10]/td[2]/div[1]/label[1]/span[1]")
+if not checkbox_input_10.is_selected():
+    print("Checkpoint 10 is Not clicked. skipping...")
+else:
+    print("Checkpoint 10 is already checked. skipping...")
+
+time.sleep(4)
+
+# Checkpoint 11 status "Need Maintenance"
+daily_checkpoint_11 = driver.find_element(By.XPATH, "//tbody/tr[11]/td[2]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_11)
+print(f"Is Element Visible?{is_displayed}")
+
+rect = daily_checkpoint_11.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+checkbox_input_11 = driver.find_element(By.XPATH, "//tbody/tr[11]/td[2]/div[1]/label[1]/span[1]")
+if not checkbox_input_11.is_selected():
+    print("Checkpoint 11 is Not clicked. skipping...")
+else:
+    print("Checkpoint 11 is already checked. skipping...")
+
+time.sleep(4)
+
+# Checkpoint 12 status "Need Maintenance"
+daily_checkpoint_12 = driver.find_element(By.XPATH, "//tbody/tr[12]/td[3]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_12)
+print(f"Is Element Visible?{is_displayed}")
+
+rect = daily_checkpoint_12.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+checkbox_input_12 = driver.find_element(By.XPATH, "//tbody/tr[12]/td[3]/div[1]/label[1]/span[1]")
+if not checkbox_input_12.is_selected():
+    print("Checkpoint 12 is Not clicked. skipping...")
+else:
+    print("Checkpoint 12 is already checked. skipping...")
+
+time.sleep(4)
+
+# Checkpoint 13 status "Need Maintenance"
+daily_checkpoint_13 = driver.find_element(By.XPATH, "//tbody/tr[13]/td[3]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_13)
+print(f"Is Element Visible?{is_displayed}")
+
+rect = daily_checkpoint_13.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+checkbox_input_13 = driver.find_element(By.XPATH, "//tbody/tr[13]/td[3]/div[1]/label[1]/span[1]")
+if not checkbox_input_13.is_selected():
+    print("Checkpoint 13 is Not clicked. skipping...")
+else:
+    print("Checkpoint 13 is already checked. skipping...")
+
+time.sleep(4)
+
+# Checkpoint 14 status "Need Maintenance"
+daily_checkpoint_14 = driver.find_element(By.XPATH, "//tbody/tr[14]/td[3]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_14)
+print(f"Is Element Visible?{is_displayed}")
+
+rect = daily_checkpoint_14.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+checkbox_input_14 = driver.find_element(By.XPATH, "//tbody/tr[14]/td[3]/div[1]/label[1]/span[1]")
+if not checkbox_input_14.is_selected():
+    print("Checkpoint 14 is Not clicked. skipping...")
+else:
+    print("Checkpoint 14 is already checked. skipping...")
+
+time.sleep(4)
+
+# Checkpoint 15 status "Need Maintenance"
+daily_checkpoint_15 = driver.find_element(By.XPATH, "//tbody/tr[15]/td[3]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_15)
+print(f"Is Element Visible?{is_displayed}")
+
+rect = daily_checkpoint_15.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+checkbox_input_15 = driver.find_element(By.XPATH, "//tbody/tr[15]/td[3]/div[1]/label[1]/span[1]")
+if not checkbox_input_15.is_selected():
+    print("Checkpoint 15 is Not clicked. skipping...")
+else:
+    print("Checkpoint 15 is already checked. skipping...")
+
+time.sleep(4)
+
+# Checkpoint 16 status "Need Maintenance"
+daily_checkpoint_16 = driver.find_element(By.XPATH, "//tbody/tr[16]/td[3]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_16)
+print(f"Is Element Visible?{is_displayed}")
+
+rect = daily_checkpoint_16.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+checkbox_input_16 = driver.find_element(By.XPATH, "//tbody/tr[16]/td[3]/div[1]/label[1]/span[1]")
+if not checkbox_input_16.is_selected():
+    print("Checkpoint 16 is Not clicked. skipping...")
+else:
+    print("Checkpoint 16 is already checked. skipping...")
+
+time.sleep(4)
+
+# Need Maintenance Checkpoint# 17 اضوية داخلية وخارجية and add Part from Pop-up Because of No map part.
+daily_checkpoint_17 = driver.find_element(By.XPATH, "//tbody/tr[17]/td[4]/div[1]/label[1]/span[1]")
+is_displayed = driver.execute_script("return arguments[0].offsetParent !== null", daily_checkpoint_17)
+
+rect = daily_checkpoint_17.rect
+print(f"Element dimensions: {rect['width']}x{rect['height']}")
+
+checkbox_input_17 = driver.find_element(By.XPATH, "//tbody/tr[17]/td[4]/div[1]/label[1]/span[1]")
+if not checkbox_input_17.is_selected():
+    print("Checkpoint 17 is Not clicked. skipping...")
+else:
+    print("Checkpoint 17 is already checked. skipping...")
+
+time.sleep(5)
+
+add_part_from_pop_up = driver.find_element(By.XPATH, "//a[normalize-space()='Add Part']")
+print("Bot finds the Add Part button path successfully:")
+add_part_from_pop_up.click()
+print("The Add Part button has been clicked successfully")
+select_task_type = driver.find_element(By.XPATH, "//span[normalize-space()='Mechanical']")
+select_task_type.click()
+print("The system selects the Task Type Successfully")
