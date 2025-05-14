@@ -20,7 +20,7 @@ driver.get("https://jett.autohub.jo/auth/login")
 # ----------------------------------------Generic Log-In Handling----------------------------------
 
 email = "admin@jett.com"
-old_password = "12341234"
+old_password = "123456"
 new_password = "123123"
 
 driver.find_element(By.NAME, "email").send_keys(email)
@@ -78,52 +78,52 @@ time.sleep(10)
 
 #---------------------Filter the newly created Job Card and assign the Supervisor to the Job Card-------.
 
-# Selenium code to use the job card number
-Admin_filter_btn = driver.find_element(By.XPATH, "//button[@id='togglefilter']")
-print("The Bot finds the Filter Path:")
-Admin_filter_btn.click()
-print("The filter button has been clicked by the Bot:")
-time.sleep(3)
-
-Admin_Job_filter_with_Job_Card_Number = driver.find_element(By.XPATH,
-                                                            "//input[@placeholder='Job Number, Customer Name or Plate Number']")
-print("The system finds the filter field path successfully:")
-Admin_Job_filter_with_Job_Card_Number.send_keys("AQ16122401")
-print("The bot successfully enter the Job Card Number to the filter field:")
-time.sleep(3)
-
-Admin_apply_filter_btn = driver.find_element(By.XPATH, "//button[@id='getJobListBtn']")
-print("The bot finds the Apply button path")
-Admin_apply_filter_btn.click()
-print("The Apply button has been successfully clicked by the bot:")
-time.sleep(5)
-
-Admin_assign_inspection_results = driver.find_element(By.XPATH,
-                                                      "//li[contains(@class,'pn-ProductNav_LinkOne current-process')]//i[contains(@class,'fas fa-edit mx-1 primary-dark-font')]")
-print("The bot finds the assign IR button successfully: ")
-Admin_assign_inspection_results.click()
-print("The assign IR button has been clicked by the bot:")
-time.sleep(5)
-
-Admin_inspection_results_dropdown = driver.find_element(By.XPATH,
-                                                        "//ng-select[@id='Inspection Results1']//input[contains(@role,'combobox')]")
-print("The bot finds the path of the IR dropdown:")
-Admin_inspection_results_dropdown.click()
-print("The IR dropdown click by the bot:")
-time.sleep(2)
-
-Admin_select_specific_inspection_technician = driver.find_element(By.XPATH,
-                                                                  "//span[contains(text(),' بلال منصور (Supervisor)')]")
-
-print("The bot finds the specific IR technician path successfully:")
-driver.execute_script("arguments[0].scrollIntoView(true);", Admin_select_specific_inspection_technician)
-Admin_select_specific_inspection_technician.click()
-print("The specific IR technician has been selected by the bot:")
-time.sleep(2)
-
-Admin_save_ir_technician = driver.find_element(By.XPATH, "//button[normalize-space()='Yes']")
-Admin_save_ir_technician.click()
-time.sleep(5)
+# # Selenium code to use the job card number
+# Admin_filter_btn = driver.find_element(By.XPATH, "//button[@id='togglefilter']")
+# print("The Bot finds the Filter Path:")
+# Admin_filter_btn.click()
+# print("The filter button has been clicked by the Bot:")
+# time.sleep(3)
+#
+# Admin_Job_filter_with_Job_Card_Number = driver.find_element(By.XPATH,
+#                                                             "//input[@placeholder='Job Number, Customer Name or Plate Number']")
+# print("The system finds the filter field path successfully:")
+# Admin_Job_filter_with_Job_Card_Number.send_keys("AQ16122401")
+# print("The bot successfully enter the Job Card Number to the filter field:")
+# time.sleep(3)
+#
+# Admin_apply_filter_btn = driver.find_element(By.XPATH, "//button[@id='getJobListBtn']")
+# print("The bot finds the Apply button path")
+# Admin_apply_filter_btn.click()
+# print("The Apply button has been successfully clicked by the bot:")
+# time.sleep(5)
+#
+# Admin_assign_inspection_results = driver.find_element(By.XPATH,
+#                                                       "//li[contains(@class,'pn-ProductNav_LinkOne current-process')]//i[contains(@class,'fas fa-edit mx-1 primary-dark-font')]")
+# print("The bot finds the assign IR button successfully: ")
+# Admin_assign_inspection_results.click()
+# print("The assign IR button has been clicked by the bot:")
+# time.sleep(5)
+#
+# Admin_inspection_results_dropdown = driver.find_element(By.XPATH,
+#                                                         "//ng-select[@id='Inspection Results1']//input[contains(@role,'combobox')]")
+# print("The bot finds the path of the IR dropdown:")
+# Admin_inspection_results_dropdown.click()
+# print("The IR dropdown click by the bot:")
+# time.sleep(2)
+#
+# Admin_select_specific_inspection_technician = driver.find_element(By.XPATH,
+#                                                                   "//span[contains(text(),' بلال منصور (Supervisor)')]")
+#
+# print("The bot finds the specific IR technician path successfully:")
+# driver.execute_script("arguments[0].scrollIntoView(true);", Admin_select_specific_inspection_technician)
+# Admin_select_specific_inspection_technician.click()
+# print("The specific IR technician has been selected by the bot:")
+# time.sleep(2)
+#
+# Admin_save_ir_technician = driver.find_element(By.XPATH, "//button[normalize-space()='Yes']")
+# Admin_save_ir_technician.click()
+# time.sleep(5)
 
 Log_out_admin = driver.find_element(By.XPATH, "//i[@class='fa fa-power-off']")
 Log_out_admin.click()
@@ -140,7 +140,7 @@ clear_password_field.clear()
 time.sleep(5)
 
 email = "supervisor@autohub.jo"
-old_password = "123123"
+old_password = "12341234"
 new_password = "123456"
 
 driver.find_element(By.NAME, "email").send_keys(email)
